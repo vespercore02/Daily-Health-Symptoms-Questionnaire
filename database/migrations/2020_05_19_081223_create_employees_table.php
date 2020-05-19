@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionnairesTable extends Migration
+class CreateEmployeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateQuestionnairesTable extends Migration
      */
     public function up()
     {
-        Schema::create('questionnaires', function (Blueprint $table) {
+        Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('emp_infos');
             $table->string('entrance_used', 100);
             $table->decimal('body_temp', 8, 2);
             $table->string('sore_throat', 100);
@@ -32,24 +32,6 @@ class CreateQuestionnairesTable extends Migration
             $table->string('travel_ncr', 100);
             $table->string('authorize', 100);
             $table->string('understand', 100);
-            /*
-            $table->unsignedInteger('pet_id');
-            $table->string('entrance_used', 100);
-            $table->decimal('body_temp', 8, 2);
-            $table->string('sore_throat', 100);
-            $table->string('cough', 100);
-            $table->string('body_pain', 100);
-            $table->string('headache', 100);
-            $table->string('fever', 100);
-            $table->string('nose', 100);
-            $table->string('lbm', 100);
-            $table->string('covid_contact', 100);
-            $table->string('symptoms_contact', 100);
-            $table->string('travel_outside', 100);
-            $table->string('travel_ncr', 100);
-            $table->string('authorize', 100);
-            $table->string('understand', 100);
-            */
             $table->timestamps();
         });
     }
@@ -61,6 +43,6 @@ class CreateQuestionnairesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionnaires');
+        Schema::dropIfExists('employees');
     }
 }

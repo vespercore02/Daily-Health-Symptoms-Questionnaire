@@ -23,7 +23,7 @@
                         <label for="" class="col-form-label font-weight-bold">Employee I.D. no.</label>
                     </td>
                     <td colspan="2">
-                        <input type="number" name="user_id" class="form-control">
+                        <input type="text" name="user_id" class="form-control">
                         {{ $errors->first('user_id')}}
                     </td>
                 </tr>

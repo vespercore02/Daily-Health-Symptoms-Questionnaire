@@ -2,30 +2,16 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            @foreach ($visitors as $visitor)
-                {{ $visitor['last_name']}}
-            @endforeach
-        </div>
-    </div>
+    
+    
+    @if(Auth::user()->role == 'Admin')
+        @include('admin');
+    @elseif(Auth::user()->role == 'Doctor')
+        @include('doctor')
+    @elseif(Auth::user()->role == 'Nurse')
+        @include('nurse')
+    @elseif(Auth::user()->role == 'Member')
+        @include('member')
+    @endif
 </div>
 @endsection

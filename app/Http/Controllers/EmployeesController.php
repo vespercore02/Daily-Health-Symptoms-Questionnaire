@@ -22,14 +22,14 @@ class EmployeesController extends Controller
         return view('questionnaire.employee', compact('entrances'));
     }
 
-    public function store(Employee $request)
+    public function store()
     {
 
-        //dd($request->input());
+        //dd(request());
         //employee::create($this->validateRequest());
-
+          
         $data = request()->validate([
-            'user_id' => 'required|exists:users,id',
+            'user_id' => 'required|exists:emp_infos,id',
             'entrance_used' => 'required',
             'body_temp' => 'required',
             'sore_throat' => 'required',
@@ -46,7 +46,9 @@ class EmployeesController extends Controller
             'authorize' => 'required',
             'understand' => 'required',
         ]);
-                    
+        
+        //dd($data);
+
         Employee::create($data);
         /*
         $employee = new Employee();

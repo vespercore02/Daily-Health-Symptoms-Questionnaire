@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/home') }}">
             DHSQ
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -10,12 +10,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+            @guest
                 <li class="nav-item">
                   <a class="nav-link" href="/employees">Employee</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/visitors">Visitor</a>
                 </li>
+            @else
+                @switch( Auth::user()->role)
+                    @case('Admin')
+                    <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                    </li>
+                    @break
+
+                    @default
+                            Default case...
+                    @endswitch
+            @endguest
+
               </ul>
 
             <!-- Right Side Of Navbar -->

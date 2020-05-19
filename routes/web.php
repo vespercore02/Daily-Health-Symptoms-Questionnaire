@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 //Auth::routes();
-Auth::routes(['register' => false]);
+//Auth::routes(['register' => false]);
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@show')->middleware('adminonly');
+Route::post('register', 'Auth\RegisterController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -25,3 +31,5 @@ Route::post('employees', 'EmployeesController@store');
 
 Route::get('visitors', 'VisitorsController@show');
 Route::post('visitors', 'VisitorsController@store');
+
+Route::get('results/{result}', 'ResultsController@show');
