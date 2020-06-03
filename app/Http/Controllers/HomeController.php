@@ -29,23 +29,15 @@ class HomeController extends Controller
 
         //dd($request);
         $visitors = Visitor::all();
-        $employees = Employee::with('emp_infos')->get();
-        $users      = User::all();
+        $employees = Employee::with('emp_infos')->where('created_at', 'LIKE', '%'.date('Y-m-d').'%')->paginate(10);
+        $ho_emps   = Employee::with('emp_infos')->where('entrance_used', 'LIKE', 'HO')->get();
+        $bo_emps   = Employee::with('emp_infos')->where('entrance_used', 'LIKE', 'BO')->get();
+        $users     = User::all();
 
-        $body_temps = Employee::where('body_temp', '>', 37)->get();
-        $sore_throats = Employee::where('sore_throat', 'Yes')->get();
-        $coughs = Employee::where('cough', 'Yes')->get();
-        $body_pains = Employee::where('body_pain', 'Yes')->get();
-        $headaches = Employee::where('headache', 'Yes')->get();
-        $fevers = Employee::where('fever', 'Yes')->get();
-        $noses = Employee::where('nose', 'Yes')->get();
-        $lbms = Employee::where('lbm', 'Yes')->get();
-        $covid_contacts = Employee::where('covid_contact', 'Yes')->get();
-        $symptoms_contacts = Employee::where('symptoms_contact', 'Yes')->get();
-        $travel_outsides = Employee::where('travel_outside', 'Yes')->get();
-        $travel_ncrs = Employee::where('travel_ncr', 'Yes')->get();
-        $authorizes = Employee::where('authorize', 'Yes')->get();
-        $understands = Employee::where('understand', 'Yes')->get();
+        /* Paginate Employee list */
+        //$employees = Employee::with('emp_infos')->where('created_at', 'LIKE', '%'.date('Y-m-d').'%')->paginate(10);
+        //dd($employees);
+
         
 
         //dd($employees);
@@ -54,20 +46,8 @@ class HomeController extends Controller
             'visitors',
             'employees',
             'users',
-            'body_temps',
-            'sore_throats',
-            'coughs',
-            'body_pains',
-            'headaches',
-            'fevers',
-            'noses',
-            'lbms',
-            'covid_contacts',
-            'symptoms_contacts',
-            'travel_outsides',
-            'travel_ncrs',
-            'authorizes',
-            'understands'
+            'ho_emps',
+            'bo_emps'
         ));
     }
 }

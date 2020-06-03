@@ -1,6 +1,6 @@
 
     <div class="row justify-content-center mb-3">
-        <div class="col-m-12">
+        <div class="col-12">
 
             <div class="card">
             
@@ -112,6 +112,9 @@
                         <thead>
                         <tr>
                             <td>
+                                I.D. No.
+                            </td>
+                            <td>
                                 Name
                             </td>
                             <td>
@@ -123,6 +126,9 @@
                             
                             @foreach ($employees as $employee)
                             <tr>
+                            <td>
+                                {{ $employee->emp_infos->id }}
+                            </td>
                             <td>
                             {{ $employee->emp_infos->full_name}}
                             </td>

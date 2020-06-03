@@ -23,11 +23,16 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@show')->middleware('adminonly');
 Route::post('register', 'Auth\RegisterController@store');
+Route::get('accounts','Auth\RegisterController@list');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('employees', 'EmployeesController@show');
 Route::post('employees', 'EmployeesController@store');
+Route::get('employees/list', 'EmployeesController@list')->middleware('auth');
+Route::post('employees/list', 'EmployeesController@search')->middleware('auth');
+Route::get('employees/view/{id}', 'EmployeesController@view')->middleware('auth');
+Route::get('monitor', 'EmployeesController@monitor')->middleware('auth');
 
 Route::get('visitors', 'VisitorsController@show');
 Route::post('visitors', 'VisitorsController@store');

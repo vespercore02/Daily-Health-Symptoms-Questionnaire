@@ -23,10 +23,19 @@
                     <li class="nav-item">
                     <a class="nav-link" href="/register">Register</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/accounts">Accounts</a>
+                    </li>
                     @break
 
                     @default
-                            Default case...
+                    <li class="nav-item">
+                        <a class="nav-link" href="/employees/list">Employee List</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/monitor">Health Monitor</a>
+                    </li>
                     @endswitch
             @endguest
 

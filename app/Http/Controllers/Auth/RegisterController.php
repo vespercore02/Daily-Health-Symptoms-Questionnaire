@@ -110,4 +110,12 @@ class RegisterController extends Controller
 
         return redirect()->back()->with('message', 'Register Successfully!');
     }
+
+    public function list()
+    {
+        $users = User::all();
+
+        return view('admin', compact('users'));
+
+    }
 }
