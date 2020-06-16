@@ -9,24 +9,35 @@
     </div>
 
     <div class="card-body">
-        <form action="employees" method="post">
+        <form action="employees/form" method="POST">
 
-            @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
+            
             
             <table class="table table-bordered">
                 <tr>
                     <td>
                         <label for="" class="col-form-label font-weight-bold">Employee I.D. no.</label>
                     </td>
+
+                    
                     <td colspan="2">
-                        <input type="text" name="user_id" class="form-control">
+                        <input type="text" name="user_id" class="form-control" value="{{ $user_info[0]->id }}">
                         {{ $errors->first('user_id')}}
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        <label for="" class="col-form-label font-weight-bold">Employee Name:</label>
+                    </td>
+
+                    
+                    <td colspan="2" class="text-center">
+                        <label for="">{{ $user_info[0]->full_name }}</label>
+                    </td>
+                </tr>
+
+
                 <tr>
                     <td>
                         <label for="" class="col-form-label font-weight-bold">Entrance Used</label>

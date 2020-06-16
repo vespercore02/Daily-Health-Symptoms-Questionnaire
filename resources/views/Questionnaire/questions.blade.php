@@ -162,13 +162,17 @@
     </td>
     <td class="text-center">
         <div class="custom-control custom-radio custom-control-inline mt-2">
-            <input type="radio" name="travel_outside" id="travel_outside_yes" value="Yes" class="custom-control-input">
+            <input type="radio" name="travel_outside" id="travel_outside_yes" value="Yes" class="custom-control-input" onchange="traveloutside();">
             <label for="travel_outside_yes" class="custom-control-label">Yes</label>
+
+        </div>
+        <div id="travel_outside_location" style="display: none;">
+            <input type="text" name="travel_outside[]" class="form-control">
         </div>
     </td>
     <td class="text-center">
         <div class="custom-control custom-radio custom-control-inline mt-2">
-            <input type="radio" name="travel_outside" id="travel_outside_no" value="No" class="custom-control-input">
+            <input type="radio" name="travel_outside" id="travel_outside_no" value="No" class="custom-control-input" onchange="traveloutside();">
             <label for="travel_outside_no" class="custom-control-label">No</label>
         </div>
     </td>
@@ -212,6 +216,19 @@
             <label class="custom-control-label" for="understand">
                 
                 I understand that my personal information is protected by RA 10173, Data Privacy Act 2012 and that I am required by RA 11469, Bayanihan to Heal as One Act, to provide truthful information.
+            </label>
+        </div>
+     
+
+    </td>
+</tr>
+<tr>
+    <td colspan="3" class="text-center">
+        <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="checkbox" value="Yes" name="declare" id="declare">
+            <label class="custom-control-label" for="declare">
+                
+                I am declaring truthfully and honestly the above information.
             </label>
         </div>
      

@@ -31,6 +31,12 @@
                                 <th>
                                     Name
                                 </th>
+                                <th>
+                                    Department
+                                </th>
+                                <th>
+                                    Office
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +48,12 @@
                                     </td>
                                     <td>
                                         {{ $emp_info->full_name}}
+                                    </td>
+                                    <td>
+                                        {{ $emp_info->department }}
+                                    </td>
+                                    <td>
+                                        {{ $emp_info->branch }}
                                     </td>
                                 </tr>
                                 

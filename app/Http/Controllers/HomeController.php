@@ -29,9 +29,13 @@ class HomeController extends Controller
 
         //dd($request);
         $visitors = Visitor::all();
-        $employees = Employee::with('emp_infos')->where('created_at', 'LIKE', '%'.date('Y-m-d').'%')->paginate(10);
-        $ho_emps   = Employee::with('emp_infos')->where('entrance_used', 'LIKE', 'HO')->get();
-        $bo_emps   = Employee::with('emp_infos')->where('entrance_used', 'LIKE', 'BO')->get();
+        $employees = Employee::with('emp_infos')->whereDate('created_at',date('Y-m-d'))->paginate(10);
+        $ho_emps   = Employee::with('emp_infos')
+                                ->whereDate('created_at', date('Y-m-d'))
+                                ->where('entrance_used', 'LIKE', '%HO%')->get();
+        $bo_emps   = Employee::with('emp_infos')
+                                ->whereDate('created_at', date('Y-m-d'))
+                                ->where('entrance_used', 'LIKE', '%BO%')->get();
         $users     = User::all();
 
         /* Paginate Employee list */

@@ -27,14 +27,22 @@ Route::get('accounts','Auth\RegisterController@list');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('employees', 'EmployeesController@show');
-Route::post('employees', 'EmployeesController@store');
+Route::get('employees', 'EmployeesController@index');
+Route::post('employees', 'EmployeesController@login');
+Route::post('employees/form', 'EmployeesController@store');
+Route::get('employees/generate', 'EmployeesController@generate');
 Route::get('employees/list', 'EmployeesController@list')->middleware('auth');
 Route::post('employees/list', 'EmployeesController@search')->middleware('auth');
 Route::get('employees/view/{id}', 'EmployeesController@view')->middleware('auth');
+Route::get('employees/report', 'EmployeesController@report')->middleware('auth');
 Route::get('monitor', 'EmployeesController@monitor')->middleware('auth');
 
 Route::get('visitors', 'VisitorsController@show');
 Route::post('visitors', 'VisitorsController@store');
 
 Route::get('results/{result}', 'ResultsController@show');
+
+Route::get('test', function () {
+    event(new App\Events\NewMessage('Welcome yeah'));
+    return "Event has been sent!";
+});

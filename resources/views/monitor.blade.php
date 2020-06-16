@@ -153,4 +153,7 @@
         </div>
     </div>
 </div>
+
+@include('notification')
 @endsection
+

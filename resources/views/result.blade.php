@@ -22,6 +22,12 @@
                                 Department
                             </td>
                             <td>
+                                Office
+                            </td>
+                            <td>
+                                Entrance Used
+                            </td>
+                            <td>
                                 Date
                             </td>
                         </tr>
@@ -35,6 +41,12 @@
                             </td>
                             <td>
                             {{ $result->emp_infos->department}}
+                            </td>
+                            <td>
+                                {{ $result->emp_info->branch }}
+                            </td>
+                            <td>
+                                {{ $result->entrance_used }}
                             </td>
                             <td>
                             {{ $result->created_at}}

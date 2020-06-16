@@ -32,6 +32,7 @@ class CreateEmployeesTable extends Migration
             $table->string('travel_ncr', 100);
             $table->string('authorize', 100);
             $table->string('understand', 100);
+            $table->string('declare', 100);
             $table->timestamps();
         });
     }
